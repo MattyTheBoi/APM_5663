@@ -1,0 +1,1 @@
+No Eulerian trail. Reason: The graph has more than two vertices with odd degrees.
