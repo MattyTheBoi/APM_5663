@@ -1,0 +1,9 @@
+Symbol Codeword
+e 101
+c 000
+b 1001
+f 01
+a 1000
+d 001
+g 11
+Average number of bits used per symbol: 2.56
