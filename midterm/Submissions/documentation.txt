@@ -62,7 +62,7 @@ The input file contains the number of vertices on the first line, followed by th
   - Input: Input directory and output directory.
   - Output: Processes each input file and writes the results to the output directory.
 
-5. Data Structures
+5. Data Structures (General)
 
 - Graph Representation: The graph is stored as an adjacency list using a defualt dictionary where the keys are vertices and the values are lists of tuples representing neighboring vertices and the weights of the edges.
 - Distances Dictionary: The minimum distance from the start vertex to each vertex is stored in a dictionary.
