@@ -1,0 +1,4 @@
+Explored vertices:
+1 4 2 3 7 8
+Minimum weight path:
+1 4 7 8
