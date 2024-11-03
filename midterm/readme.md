@@ -2,7 +2,7 @@
 
 ## Overview
 
-This program reads a graph from a given text file, represented via its edges, and finds the minimum weight path between two specified vertices using Dijkstra's algorithm. The program outputs the vertices in the order they are explored and the minimum weight path found between the two vertices, or states that there is no such path if the vertices lie in different components. This was done as an assignment for Oakland University, APM 5663 in Fall, 2024.
+This program reads a graph from a given text file, represented via its edges, and finds the minimum weight path between two specified vertices using Dijkstra's algorithm. The program outputs the vertices in the order they are explored and the minimum weight path found between the two vertices, or states that there is no such path if the vertices lie in different components. This was done as part of a Midterm for Oakland University, APM 5663 in Fall, 2024.
 
 ## Files
 
