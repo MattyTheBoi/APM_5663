@@ -5,6 +5,7 @@ from collections import defaultdict
 # Function to read the graph from a file
 def read_graph(filename):
     with open(filename, 'r') as f:
+        # Get the number of vertices, start and end vertices, and the edges
         num_vertices = int(f.readline().strip())
         start_vertex, end_vertex = map(int, f.readline().strip().split())
         edges = [tuple(map(int, line.split())) for line in f]
@@ -13,23 +14,28 @@ def read_graph(filename):
 # Function to implement Dijkstra's algorithm
 def dijkstra(num_vertices, start_vertex, end_vertex, edges):
     graph = defaultdict(list) # Adjacency list representation of the graph
+    # Create the graph
     for u, v, w in edges:
         graph[u].append((v, w))
         graph[v].append((u, w))
 
+    # Dijkstra's algorithm, using a min heap
     min_heap = [(0, start_vertex)]
-    distances = {i: float('inf') for i in range(1, num_vertices + 1)}
-    distances[start_vertex] = 0
-    previous = {i: None for i in range(1, num_vertices + 1)}
-    explored = []
+    distances = {i: float('inf') for i in range(1, num_vertices + 1)} # Initialize all distances to infinity
+    distances[start_vertex] = 0  # Distance from start vertex to itself is 0
+    previous = {i: None for i in range(1, num_vertices + 1)} # Initialize all previous vertices to None
+    explored = [] # List to store the explored vertices, start with it empty
 
-    while min_heap:
+    # Main loop
+    while min_heap: # While the min heap is not empty
         current_distance, current_vertex = heapq.heappop(min_heap)
         explored.append(current_vertex)
 
+        # If the current vertex is the end vertex, break
         if current_vertex == end_vertex:
             break
 
+        # Update the distances and previous vertices of the neighbors of the current vertex
         for neighbor, weight in graph[current_vertex]:
             distance = current_distance + weight
             if distance < distances[neighbor]:
@@ -37,14 +43,17 @@ def dijkstra(num_vertices, start_vertex, end_vertex, edges):
                 previous[neighbor] = current_vertex
                 heapq.heappush(min_heap, (distance, neighbor))
 
+    # Reconstruct the path from start vertex to end vertex
     path = []
-    if distances[end_vertex] != float('inf'):
-        while end_vertex is not None:
+    if distances[end_vertex] != float('inf'): # If a path exists
+        while end_vertex is not None: # Reconstruct the path
             path.insert(0, end_vertex)
             end_vertex = previous[end_vertex]
-    else:
+    # If the start and end vertices lie in different components, no path exists
+    else: 
         path = None
 
+    # Return the explored vertices and the path
     return explored, path
 
 # Function to write the output to a file
