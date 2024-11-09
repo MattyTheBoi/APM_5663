@@ -29,6 +29,12 @@ def dijkstra(num_vertices, start_vertex, end_vertex, edges):
     # Main loop
     while min_heap: # While the min heap is not empty
         current_distance, current_vertex = heapq.heappop(min_heap)
+
+        # If the current vertex has already been explored, skip it
+        if current_vertex in explored:
+            continue
+
+        # Add the current vertex to the list of explored vertices
         explored.append(current_vertex)
 
         # If the current vertex is the end vertex, break
