@@ -6,4 +6,4 @@ d 010
 e 10
 f 011
 g 110
-Average number of bits used per symbol: 2.70
+Average number of bits used per symbol: 2.700

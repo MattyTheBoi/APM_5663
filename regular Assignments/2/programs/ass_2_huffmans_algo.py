@@ -70,7 +70,7 @@ def write_output_file(file_path, codes, symbols_freq):
             total_bits += len(codeword) * freq  # Accumulate total bits used
         
         avg_bits_per_symbol = total_bits / total_freq  # Calculate average bits per symbol
-        file.write(f"Average number of bits used per symbol: {avg_bits_per_symbol:.2f}\n")
+        file.write(f"Average number of bits used per symbol: {avg_bits_per_symbol:.3f}\n")
 
 # Defintion for Huffman's algorithm, i.e. the main function
 def huffman_algo(input_file, output_file):

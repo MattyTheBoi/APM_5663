@@ -25,4 +25,4 @@ w 1101
 x 00001
 y 01100
 z 111100
-Average number of bits used per symbol: 4.49
+Average number of bits used per symbol: 4.485
