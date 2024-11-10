@@ -76,21 +76,19 @@ The input file contains the following information:
 
 ### 6. Main Variables
 
-- `capacity`: The residual capacity matrix representing the network.
-- `flow`: The flow matrix storing the flow along each edge.
-- `original_capacity`: The original capacity matrix used to compute the minimum cut.
-- `parent`: A dictionary storing the parent of each vertex in the augmenting path.
-- `max_flow`: The total maximum flow value from the source to the sink.
-- `min_cut`: A list of edges that form the minimum cut of the graph.
-- `visited`: A set of vertices that are reachable from the source after the Ford-Fulkerson algorithm completes.
+- **capacity**: The residual capacity matrix representing the network.
+- **flow**: The flow matrix storing the flow along each edge.
+- **original_capacity**: The original capacity matrix used to compute the minimum cut.
+- **parent**: A dictionary storing the parent of each vertex in the augmenting path.
+- **max_flow**`**: The total maximum flow value from the source to the sink.
+- **min_cut**: A list of edges that form the minimum cut of the graph.
+- **visited**: A set of vertices that are reachable from the source after the Ford-Fulkerson algorithm completes.
 
 ### 7. References
 
 - [Ford-Fulkerson Algorithm](https://www.w3schools.com/dsa/dsa_algo_graphs_fordfulkerson.php#:~:text=Residual%20Network%20in%20Ford%2DFulkerson&text=The%20residual%20capacity%20can%20be,of%20flow%20through%20that%20edge.)
 
 ## Contact
-
-For any questions, feel free to email mhorvath@oakland.edu.
 
 For any questions, feel free to email mhorvath@oakland.edu.
 
