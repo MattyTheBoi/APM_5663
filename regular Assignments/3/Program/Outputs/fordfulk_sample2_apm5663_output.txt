@@ -1,0 +1,24 @@
+Maximum Flow: 16
+Flow values on all edges:
+Edge 6-10, Flow: 5
+Edge 2-6, Flow: 5
+Edge 1-2, Flow: 4
+Edge 1-3, Flow: 4
+Edge 1-4, Flow: 3
+Edge 1-5, Flow: 5
+Edge 7-10, Flow: 5
+Edge 3-7, Flow: 4
+Edge 8-10, Flow: 4
+Edge 8-2, Flow: 1
+Edge 4-8, Flow: 5
+Edge 5-7, Flow: 1
+Edge 5-9, Flow: 4
+Edge 9-10, Flow: 2
+Edge 9-4, Flow: 2
+Vertices on the left side of the minimum cut:
+1 (source), 3, 4, 5, 7, 9
+Edges in the minimum cut with capacities:
+Edge 1-2, Cap: 4
+Edge 4-8, Cap: 5
+Edge 7-10, Cap: 5
+Edge 9-10, Cap: 2
