@@ -2,7 +2,7 @@ Ford-Fulkerson Algorithm Solver
 
 Overview
 
-This program reads a graph from a given text file, represented by its edges and capacities, and finds the maximum flow between two specified vertices using the Ford-Fulkerson algorithm. The program also computes the minimum cut of the graph and outputs the flow values on all edges, as well as the vertices on the left side of the minimum cut. This was done as part of a Midterm for Oakland University, APM 5663 in Fall, 2024.
+This program reads a graph from a given text file, represented by its edges and capacities, and finds the maximum flow between two specified vertices using the Ford-Fulkerson algorithm. The program also computes the minimum cut of the graph and outputs the flow values on all edges, as well as the vertices on the left side of the minimum cut. This was done as part of a an assignment at Oakland University, APM 5663 in Fall, 2024.
 
 Files
 
