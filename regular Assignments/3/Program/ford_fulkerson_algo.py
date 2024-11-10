@@ -29,27 +29,28 @@ def bfs(capacity, source, sink, parent):
     # No path was found
     return False
 
-# Function to implement the Ford-Fulkerson algorithm
-def ford_fulkerson(source, sink, edges):
+# Function to implement the Ford-Fulkerson algorithm. Num_vertices not used, to lazy to fix right now....
+def ford_fulkerson(num_vertices, source, sink, edges):
     capacity = defaultdict(lambda: defaultdict(int))
     flow = defaultdict(lambda: defaultdict(int))
     original_capacity = defaultdict(lambda: defaultdict(int))
     for u, v, w in edges:
         # This capacity dictionary stores the residual capacity of the graph
         capacity[u][v] = w
-        original_capacity[u][v] = w
+        original_capacity[u][v] = w # Store the original capacity, for output as it is what truly "certifies" the cut
     
     parent = {}
     max_flow = 0
     
+    # While there is an augmenting path
     while bfs(capacity, source, sink, parent):
         path_flow = float('Inf')
         s = sink
-        
+        # Find the minimum flow in the path
         while s != source:
             path_flow = min(path_flow, capacity[parent[s]][s])
             s = parent[s]
-        
+        # Add path flows to the residual graph
         v = sink
         while v != source:
             u = parent[v]
@@ -58,7 +59,7 @@ def ford_fulkerson(source, sink, edges):
             flow[u][v] += path_flow
             flow[v][u] -= path_flow
             v = parent[v]
-        
+        # Add path flow to the max flow
         max_flow += path_flow
     
     # Find the minimum cut
@@ -66,6 +67,7 @@ def ford_fulkerson(source, sink, edges):
     queue = deque([source])
     visited.add(source)
     
+    # Perform BFS to find all vertices reachable from the source. I think there is a better way to do this
     while queue:
         u = queue.popleft()
         for v in capacity[u]:
