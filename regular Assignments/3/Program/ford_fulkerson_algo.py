@@ -11,28 +11,31 @@ def read_graph(file_path):
 
 # Function to perform BFS and find an augmenting path
 def bfs(capacity, source, sink, parent):
-    visited = set()
-    queue = deque([source])
-    visited.add(source)
+    visited = set() # Set to store visited vertices
+    queue = deque([source]) # Queue for BFS
+    visited.add(source) # Mark source as visited
     
-    while queue:
-        u = queue.popleft()
-        
+    while queue: # While queue is not empty
+        u = queue.popleft() # Pop the front vertex, using the popleft() function
+        # Iterate over all adjacent vertices
         for v in capacity[u]:
             if v not in visited and capacity[u][v] > 0:  # If not visited and capacity > 0
                 queue.append(v)
                 visited.add(v)
                 parent[v] = u
+                # If sink is reached, return True, i.e. we have a f-augmenting s-t path
                 if v == sink:
                     return True
+    # No path was found
     return False
 
 # Function to implement the Ford-Fulkerson algorithm
-def ford_fulkerson(num_vertices, source, sink, edges):
+def ford_fulkerson(source, sink, edges):
     capacity = defaultdict(lambda: defaultdict(int))
     flow = defaultdict(lambda: defaultdict(int))
     original_capacity = defaultdict(lambda: defaultdict(int))
     for u, v, w in edges:
+        # This capacity dictionary stores the residual capacity of the graph
         capacity[u][v] = w
         original_capacity[u][v] = w
     

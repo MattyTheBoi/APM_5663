@@ -47,7 +47,7 @@ The input file contains the following information:
   - **Input**: The capacity matrix, source vertex, sink vertex, and a parent dictionary for reconstructing the path.
   - **Output**: Returns `True` if an augmenting path is found, `False` otherwise.
 
-- **`ford_fulkerson(num_vertices, source, sink, edges)`**: Implements the Ford-Fulkerson algorithm to find the maximum flow and minimum cut.
+- **`ford_fulkerson(source, sink, edges)`**: Implements the Ford-Fulkerson algorithm to find the maximum flow and minimum cut.
   - **Input**: Number of vertices, source vertex, sink vertex, and a list of edges.
   - **Output**: Maximum flow value, flow values on all edges, the minimum cut, and the set of visited vertices.
   - **Data Structure**:
@@ -84,7 +84,13 @@ The input file contains the following information:
 - `min_cut`: A list of edges that form the minimum cut of the graph.
 - `visited`: A set of vertices that are reachable from the source after the Ford-Fulkerson algorithm completes.
 
+### 7. References
+
+- [Ford-Fulkerson Algorithm](https://www.w3schools.com/dsa/dsa_algo_graphs_fordfulkerson.php#:~:text=Residual%20Network%20in%20Ford%2DFulkerson&text=The%20residual%20capacity%20can%20be,of%20flow%20through%20that%20edge.)
+
 ## Contact
+
+For any questions, feel free to email mhorvath@oakland.edu.
 
 For any questions, feel free to email mhorvath@oakland.edu.
 
