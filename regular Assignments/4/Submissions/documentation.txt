@@ -1,0 +1,93 @@
+Power Series Coefficient Finder
+
+Overview
+
+This program reads a power series from a given text file, represented by its coefficients, and computes the first m + 1 coefficients of the k-th power, 
+the reciprocal, and the inverse of the given power series f(x) = sum(a_i * x^i) for i = 0 to n. The program outputs whether the reciprocal or the inverse exists, 
+and then prints the first m + 1 coefficients of each of the power series f^k(x), 1/f(x), and f^(-1)(x), whichever exists. 
+This was done as part of an assignment at Oakland University, APM 5663 in Fall, 2024.
+
+Files
+
+- coeff_finder_ass4.py: The main script that computes the coefficients of the k-th power, reciprocal, and inverse of a power series.
+- Inputs/: Directory containing input files with power series data.
+- Outputs/: Directory where the output files with results will be saved.
+
+How to Run
+
+1. Ensure you have Python installed on your system.
+2. Place your input files in the Inputs directory.
+3. Run the script using `python coeff_finder_ass4.py`.
+4. The results will be saved in the Outputs directory with filenames corresponding to the input files, appended with _output.
+
+Program Documentation
+
+1. Overview
+
+The program reads a power series from an input file, computes the first m + 1 coefficients of the k-th power, the reciprocal, and the inverse of the given power series. 
+The results are written to an output file, including whether the reciprocal and inverse exist, and the coefficients of each series.
+
+2. Key Concepts
+
+- k-th Power: The power series raised to the k-th power.
+- Reciprocal: The reciprocal of the power series, 1/f(x).
+- Inverse: The inverse of the power series, f^(-1)(x), such that f(f^(-1)(x)) = x.
+
+3. File Format
+
+The input file contains the following information:
+1. The first line contains the values of n, k, and m (nonnegative integers).
+2. The next n + 1 lines contain the first n + 1 coefficients (a_0, a_1, ..., a_n) of the power series f(x).
+
+4. Functions in the Program
+
+- read_power_series(file_path): Reads the input file and constructs the power series.
+  - Input: File path of the input file.
+  - Output: Number of terms (n), power (k), number of coefficients to compute (m), and the list of coefficients.
+  - Data Structure: A list of coefficients where each coefficient is a float.
+
+- multiply_series(a, b, m): Multiplies two power series and returns the first m + 1 coefficients.
+  - Input: Two lists of coefficients (a and b) and the number of coefficients to compute (m).
+  - Output: List of the first m + 1 coefficients of the product series.
+
+- compute_kth_power(n, k, m, coefficients): Computes the first m + 1 coefficients of the k-th power of the power series.
+  - Input: Number of terms (n), power (k), number of coefficients to compute (m), and the list of coefficients.
+  - Output: List of the first m + 1 coefficients of the k-th power series.
+
+- compute_reciprocal(n, m, coefficients): Computes the first m + 1 coefficients of the reciprocal of the power series.
+  - Input: Number of terms (n), number of coefficients to compute (m), and the list of coefficients.
+  - Output: List of the first m + 1 coefficients of the reciprocal series, or None if the reciprocal does not exist.
+  - Check for Existence: The reciprocal exists if and only if the first coefficient a_0 is not zero.
+
+- compute_inverse(n, m, coefficients): Computes the first m + 1 coefficients of the inverse of the power series.
+  - Input: Number of terms (n), number of coefficients to compute (m), and the list of coefficients.
+  - Output: List of the first m + 1 coefficients of the inverse series, or None if the inverse does not exist.
+  - Check for Existence: The inverse exists if and only if the first coefficient a_0 is not zero and if and only if the second coeffiecent a_1 is 0.
+
+- write_output(file_path, kth_power, reciprocal, inverse): Writes the output to a file.
+  - Input: Output file path, k-th power coefficients, reciprocal coefficients, and inverse coefficients.
+  - Output: Writes whether the reciprocal and inverse exist, and the coefficients of each series to the output file.
+
+- process_file(input_filepath, output_filepath): Processes a single input file.
+  - Input: Input file path and output file path.
+  - Output: Calls the functions to compute the coefficients and writes the results to the output file.
+
+- process_all_files(input_dir, output_dir): Processes all files in the input directory.
+  - Input: Input directory and output directory.
+  - Output: Processes each input file and writes the results to the output directory.
+
+5. Data Structures (General)
+
+- Coefficient List: The coefficients of the power series are stored in a list of floats.
+- Result List: The computed coefficients of the k-th power, reciprocal, and inverse are stored in lists of floats.
+
+6. Main Variables
+
+- coefficients: The list of coefficients of the input power series.
+- kth_power: The list of coefficients of the k-th power of the power series.
+- reciprocal: The list of coefficients of the reciprocal of the power series.
+- inverse: The list of coefficients of the inverse of the power series.
+
+Contact
+
+For any questions, feel free to email mhorvath@oakland.edu.
