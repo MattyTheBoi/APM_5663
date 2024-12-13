@@ -1,1 +1,0 @@
-The weight of the minimum edge-cut is 0.
