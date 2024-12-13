@@ -32,37 +32,41 @@ After completion, the algorithm uses the recorded merging steps to reconstruct w
 
 Data Structures and Main Variables
 ----------------------------------
-- graph (Dict[int, List[Tuple[int,int]]]):
-  A mapping from each vertex to a list of (neighbor, weight) pairs.
+- **defaultdict**:  
+  The code makes extensive use of Python's `collections.defaultdict` to simplify the handling of dictionaries with default values, especially when building and updating the graph structure.
 
-- original_edges (List[Tuple[int,int,int]]):
-  A list of all original edges, each represented as (u, v, weight).
+- **graph (Dict[int, List[Tuple[int,int]]])**:
+  A mapping from each vertex to a list of `(neighbor, weight)` pairs.
+  Implemented as a `defaultdict(list)` for easy insertion of edges.
 
-- merged_vertices (Dict[int, Set[int]]):
+- **original_edges (List[Tuple[int,int,int]])**:
+  A list of all original edges, each represented as `(u, v, weight)`.
+
+- **merged_vertices (Dict[int, Set[int]])**:
   Tracks the merging of vertices. Keys are "super-vertices" and values are sets of original vertices they represent.
 
-- best_cut_weight (int):
+- **best_cut_weight (int)**:
   The smallest (best) minimum cut weight found so far. Starts at infinity and updates whenever a better cut is discovered.
 
-- best_partition (Set[int]):
+- **best_partition (Set[int])**:
   A set of super-vertices representing one side of the best minimum cut found. Later expanded into the set of original vertices.
 
-- cut_edges (Set[Tuple[int,int,int]]):
+- **cut_edges (Set[Tuple[int,int,int]])**:
   The set of edges that cross the discovered minimum cut. Computed after identifying the minimum cut partition.
 
 Functions
 ---------
 1. run_stoer_wagner(input_file, output_file):
-   - Reads the graph from input_file.
-   - Calls compute_min_cut to determine the min cut partition and weight.
-   - Identifies the edges crossing the cut using original_edges.
-   - Writes the results (min-cut weight, partition, and cut edges) to output_file.
+   - Reads the graph from `input_file`.
+   - Calls `compute_min_cut` to determine the min cut partition and weight.
+   - Identifies the edges crossing the cut using `original_edges`.
+   - Writes the results (min-cut weight, partition, and cut edges) to `output_file`.
 
 2. read_graph_from_file(file_path):
    - Reads the graph from the given file.
    - The first line contains the number of vertices.
    - Each subsequent line describes an edge: "u v weight".
-   - Returns graph and original_edges.
+   - Returns `graph` and `original_edges`.
 
 3. compute_min_cut(graph):
    - Implements the Stoer-Wagner algorithm.
@@ -78,20 +82,20 @@ Functions
    - Returns the last two added vertices (defining an s-t cut), the cut weight, and the order of added vertices.
 
 5. merge_vertices(g, s, t, merged_vertices):
-   - Merges two vertices s and t in the graph g.
-   - Updates merged_vertices to reflect the merge.
+   - Merges two vertices `s` and `t` in the graph `g`.
+   - Updates `merged_vertices` to reflect the merge.
    - Redirects and combines edges, removing self-loops and merging parallel edges.
    - Returns the updated graph.
 
-6. write_output_file(file_path, partition, cut_edges, min_cut_weight):
+6. write_output_file(file_path, partition, other_side, cut_edges, min_cut_weight):
    - Writes the computed min cut results to file:
      - The min-cut weight.
      - The vertices on one side of the cut.
      - The edges crossing the cut and their weights.
 
 7. process_all_files(input_dir, output_dir):
-   - Processes all .txt files in input_dir.
-   - For each file, runs run_stoer_wagner and writes the results to output_dir.
+   - Processes all `.txt` files in `input_dir`.
+   - For each file, runs `run_stoer_wagner` and writes results to `output_dir`.
 
 Usage
 -----
@@ -104,7 +108,7 @@ Usage
    - The set of vertices on one side of the cut.
    - The edges that cross the cut and their weights.
 
-Adjust input_dir and output_dir in the __main__ section as needed.
+Adjust `input_dir` and `output_dir` in the `__main__` section as needed.
 
 External Reference
 ------------------

@@ -29,11 +29,14 @@ After completion, the algorithm uses the recorded merging steps to reconstruct w
 
 ## Data Structures and Main Variables
 
+- **defaultdict**:  
+  The code uses Python's `collections.defaultdict` extensively to handle dictionaries with default values. This simplifies the construction and modification of the graph structure during merges and updates.
+
 - **graph (Dict[int, List[Tuple[int,int]]])**:  
-  A mapping from each vertex to a list of (neighbor, weight) pairs.
+  A mapping from each vertex to a list of `(neighbor, weight)` pairs, implemented as a `defaultdict(list)` for easy edge insertion.
 
 - **original_edges (List[Tuple[int,int,int]])**:  
-  A list of all original edges, each represented as (u, v, weight).
+  A list of all original edges, each represented as `(u, v, weight)`.
 
 - **merged_vertices (Dict[int, Set[int]])**:  
   Tracks the merging of vertices. Keys are "super-vertices" and values are sets of the original vertices they represent.
@@ -58,7 +61,7 @@ After completion, the algorithm uses the recorded merging steps to reconstruct w
 2. **read_graph_from_file(file_path)**  
    - Reads the graph from the given file.
    - The first line contains the number of vertices.
-   - Each subsequent line describes an edge: "u v weight".
+   - Each subsequent line describes an edge: `u v weight`.
    - Returns `graph` and `original_edges`.
 
 3. **compute_min_cut(graph)**  
@@ -80,7 +83,7 @@ After completion, the algorithm uses the recorded merging steps to reconstruct w
    - Redirects and combines edges, removing self-loops and merging parallel edges.
    - Returns the updated `graph`.
 
-6. **write_output_file(file_path, partition, cut_edges, min_cut_weight)**  
+6. **write_output_file(file_path, partition, other_side, cut_edges, min_cut_weight)**  
    - Writes the computed min cut results to file:
      - The min-cut weight.
      - The vertices on one side of the cut.
@@ -94,7 +97,7 @@ After completion, the algorithm uses the recorded merging steps to reconstruct w
 
 1. Ensure you have **Python 3.x** installed.
 2. Place input files in the `Inputs` directory.  
-   Each file should start with the number of vertices, followed by lines in the format: u v weight
+   The first line in each file should be the number of vertices, followed by lines in the format: u v weight
 3. Run the program:
 - It reads each input file, computes the min cut, and writes results to the `Outputs` directory.
 4. The output file includes:
@@ -109,4 +112,3 @@ Adjust `input_dir` and `output_dir` in the `__main__` section as needed.
 - [Thomas Jungblut's Blog on Minimum Cut](https://blog.thomasjungblut.com/graph/mincut/mincut/)
 
 For additional questions, contact: [mhorvath@oakland.edu](mailto:mhorvath@oakland.edu)
-
