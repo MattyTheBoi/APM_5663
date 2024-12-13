@@ -1,0 +1,7 @@
+The weight of the minimum edge-cut is 2.
+The vertices on one side of the cut are:
+{1, 2}
+The vertices on the other side of the cut are:
+{3, 4, 5}
+The edges of the cut with their weights are:
+Edge (2, 3) with weight 2

@@ -22,16 +22,30 @@ def merge_vertices(g: Dict[int, List[Tuple[int, int]]], s: int, t: int):
             else:
                 new_graph[v].append((dest, weight))  # Keep other edges unchanged
     
-    # Merge all edges from t to others into s
+    # Merge all edges from t to others into s, except the edge to s
     for dest, weight in g[t]:
         if dest != s:
             new_graph[s].append((dest, weight))
+    
+    # Remove self-loop from s if it exists
+    new_graph[s] = [(v, w) for v, w in new_graph[s] if v != s]
+
+    # Combine parallel edges
+    for v, edges in new_graph.items():
+        new_edges = defaultdict(int)
+        for dest, weight in edges:
+            new_edges[dest] += weight
+        new_graph[v] = [(dest, weight) for dest, weight in new_edges.items()]
+
+    # list vertice and edges nicely for debugging
+    for v, edges in new_graph.items():
+        print(f"Vertex {v}: {edges}")
 
     return new_graph
 
-def compute_min_cut(graph: Dict[int, List[Tuple[int, int]]] ):
+def compute_min_cut(graph: Dict[int, List[Tuple[int, int]]]):
     # "Legal Order" algorithm for Stoer-Wagner min-cut
-    def maximum_adjacency_search(g: Dict[int, List[Tuple[int, int]]]):
+    def maximum_adjacency_search(g: Dict[int, List[Tuple[int, int]]] ):
         visited = set()
         order = []
         weights = defaultdict(int)
@@ -45,21 +59,17 @@ def compute_min_cut(graph: Dict[int, List[Tuple[int, int]]] ):
         print(f"Starting search with vertex {start}")
         
         for _ in range(len(g) - 1):
-            print(f"\nCurrent vertex: {current}")
             # Process all neighbors of the current vertex
             for neighbor, weight in g[current]:
                 if neighbor not in visited:
                     weights[neighbor] += weight
-                    print(f"    Adding weight for {neighbor}: {weights[neighbor]}")
             
-            # Select the next vertex with the maximum weight (If there are multiple, pick the lowest-numbered vertex)
+            # Select the next vertex with the maximum weight
             max_vertex = max(
                 (v for v in weights if v not in visited), 
-                key=lambda v: (weights[v], -v),  # First prioritize weight, then will prefer lower vertex number (-v)
+                key=lambda v: (weights[v], -v),
                 default=None
             )
-
-            print(f"    Next candidate max_vertex: {max_vertex} with weight {weights.get(max_vertex, 'N/A')}")
             
             if max_vertex is None:
                 break
@@ -88,26 +98,38 @@ def compute_min_cut(graph: Dict[int, List[Tuple[int, int]]] ):
 
     while len(graph) > 1:
         s, t, cut_weight, partition = maximum_adjacency_search(graph)
-        # Print out the adjacency search result and the cut weight
+        
+        # Collect edges in the cut *before* merging
+        current_cut_edges = [(u, v, w) for u in original_graph for v, w in original_graph[u] 
+                             if u in best_partition and v not in best_partition]
+        
         print(f"Adjacency search order: {partition}")
         print(f"Cut weight: {cut_weight}")
-        # We check if equal as well, since over time, the cut will get smaller, so its easier to check
+
         if cut_weight <= best_cut_weight:
-            # Update the best cut weight and partition
             best_cut_weight = cut_weight
             best_partition = set(partition)
             print(f"New best cut weight: {best_cut_weight}")
             print(f"New best partition: {best_partition}")
 
-            # Collect edges in the cut
-            cut_edges = [(u, v, w) for u in original_graph for v, w in original_graph[u] 
-                        if u in best_partition and v not in best_partition]
+            # Update cut edges for the best partition
+            cut_edges = current_cut_edges
             print(f"Edges in the current best cut: {cut_edges}")
-        # Print what we are merging
+
         print(f"Merging {s} and {t} with cut weight {cut_weight}")
+        print(f"Merging vertices {s} and {t} into {s}")
+
+        # Create a debug print of the merged vertices, and updated it with either another new merged vertex, or appended to a previous
+        merged_vertices = f"{s} + {t}"
+
+        print(f"Merged vertices: {merged_vertices}")
+
+        
+        # Merge the vertices after the cut has been recorded
         graph = merge_vertices(graph, s, t)
 
     return best_partition, best_cut_weight, cut_edges
+
 
 
 def read_graph_from_file(file_path: str):

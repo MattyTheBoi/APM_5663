@@ -1,60 +1,21 @@
-The weight of the minimum edge-cut is 92.
+The weight of the minimum edge-cut is 100.
 The vertices on one side of the cut are:
-{1, 3, 5, 7, 8, 9, 11, 13, 17, 19, 20, 21, 23, 25, 27, 29, 32, 33, 35, 36, 39, 41, 43, 45, 47}
+{1, 3, 5, 7, 9, 11, 13, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49}
 The vertices on the other side of the cut are:
-{2, 4, 6, 10, 12, 14, 15, 16, 18, 22, 24, 26, 28, 30, 31, 34, 37, 38, 40, 42, 44, 46, 48, 49, 50}
+{2, 4, 6, 8, 10, 12, 14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50}
 The edges of the cut with their weights are:
-Edge (1, 2) with weight 1
-Edge (1, 4) with weight 1
-Edge (1, 14) with weight 10
 Edge (23, 46) with weight 1
-Edge (23, 48) with weight 1
-Edge (23, 12) with weight 10
-Edge (47, 44) with weight 1
 Edge (47, 46) with weight 1
-Edge (5, 10) with weight 1
-Edge (5, 12) with weight 1
-Edge (5, 26) with weight 10
-Edge (39, 28) with weight 1
-Edge (39, 30) with weight 1
-Edge (29, 10) with weight 1
-Edge (3, 6) with weight 1
-Edge (17, 37) with weight 80
-Edge (17, 34) with weight 1
-Edge (17, 44) with weight 10
-Edge (27, 49) with weight 67
-Edge (27, 4) with weight 1
-Edge (27, 6) with weight 1
+Edge (4, 46) with weight 64
+Edge (10, 50) with weight 66
+Edge (6, 42) with weight 54
+Edge (6, 46) with weight 52
 Edge (8, 42) with weight 58
-Edge (8, 40) with weight 63
-Edge (32, 4) with weight 75
-Edge (32, 15) with weight 1
-Edge (32, 28) with weight 84
-Edge (32, 48) with weight 67
-Edge (45, 40) with weight 1
 Edge (45, 42) with weight 1
-Edge (35, 22) with weight 1
-Edge (7, 14) with weight 1
-Edge (7, 16) with weight 1
-Edge (13, 26) with weight 1
-Edge (13, 28) with weight 1
-Edge (41, 34) with weight 1
-Edge (36, 44) with weight 76
 Edge (36, 46) with weight 86
-Edge (9, 18) with weight 1
-Edge (20, 18) with weight 73
-Edge (20, 48) with weight 78
-Edge (20, 26) with weight 74
-Edge (11, 22) with weight 1
-Edge (11, 24) with weight 1
-Edge (43, 38) with weight 1
-Edge (33, 15) with weight 69
-Edge (33, 16) with weight 1
-Edge (33, 18) with weight 1
-Edge (19, 31) with weight 58
-Edge (19, 38) with weight 1
-Edge (19, 40) with weight 1
+Edge (28, 42) with weight 55
+Edge (49, 50) with weight 1
+Edge (37, 50) with weight 10
+Edge (34, 50) with weight 79
 Edge (21, 42) with weight 1
-Edge (21, 44) with weight 1
 Edge (25, 50) with weight 1
-Edge (25, 2) with weight 1
