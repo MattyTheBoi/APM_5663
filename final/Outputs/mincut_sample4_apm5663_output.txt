@@ -1,6 +1,6 @@
 The weight of the minimum edge-cut is 9.
 The vertices on one side of the cut are:
-{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17}
+{16}
 The edges of the cut with their weights are:
 Edge (14, 16) with weight 3
 Edge (11, 16) with weight 2

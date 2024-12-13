@@ -140,7 +140,7 @@ def write_output_file(file_path, partition, other_side, cut_edges, min_cut_weigh
     with open(file_path, 'w') as f:
         f.write(f"The weight of the minimum edge-cut is {min_cut_weight}.\n")
         f.write("The vertices on one side of the cut are:\n")
-        f.write(f"{partition}\n")
+        f.write(f"{other_side}\n")
         f.write("The edges of the cut with their weights are:\n")
         for u, v, w in cut_edges:
             f.write(f"Edge ({u}, {v}) with weight {w}\n")
