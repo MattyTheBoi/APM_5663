@@ -1,6 +1,10 @@
 from collections import defaultdict
 import os
 
+# External Reference (Explanation of Stoer-Wagner Algorithm in a Java implementation blog post)
+# ------------------
+# https://blog.thomasjungblut.com/graph/mincut/mincut/
+
 def run_stoer_wagner(input_file, output_file):
     graph, original_edges = read_graph_from_file(input_file)
     partition, min_cut_weight, _ = compute_min_cut(graph)
